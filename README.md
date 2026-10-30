@@ -1,1 +1,0 @@
-# StatPhys_Lab1_GroupD
