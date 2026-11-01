@@ -28,10 +28,6 @@ def main():
         plt.show()
         plt.close()
         print(f" -> Generated and saved: {output_path}")
-
-    print("All distribution plots are now available in 'report/figures/'.")
-
-
 if __name__ == "__main__":
     main()
 
