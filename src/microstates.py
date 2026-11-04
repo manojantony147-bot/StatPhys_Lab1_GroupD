@@ -46,3 +46,5 @@ def benchmark_enumeration(max_time_seconds: int = 300) -> None:
             print(f"Time limit exceeded at N={N}.")
             break
         N += 1
+
+
