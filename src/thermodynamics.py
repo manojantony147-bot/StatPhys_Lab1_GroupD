@@ -1,4 +1,4 @@
-from combinatorics import log_omega
+from src.combinatorics import log_omega
 import math
 
 def expected_waiting_time(N: int, k_target: int, rate_per_second: int) -> float:
