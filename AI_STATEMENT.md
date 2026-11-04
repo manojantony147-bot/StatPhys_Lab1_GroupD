@@ -1,4 +1,8 @@
+# AI_Statement
+
 For this task, it has been used Gemini Pro 3.1. The use of AI was explicitly as code assistant.
+
+# Analysis of microstates
 
 Prompt 1: I need you as my code assistant to help me develop a code for the computational analysis of microstates (Also we have uploaded the laboratory guide for more background for the AI).
 
@@ -8,17 +12,18 @@ As your code assistant, I can help you structure the logic and write the core ma
 import itertools
 import math
 
-# a) Generate all microstates for N=7
+#a) Generate all microstates for N=7
 N = 7
-# Creates tuples of all possible 2^N configurations
+#Creates tuples of all possible 2^N configurations
 microstates = list(itertools.product(['H', 'T'], repeat=N))
 
-# c) Macrostate Frequency Calculation
+#c) Macrostate Frequency Calculation
 def calculate_omega(n, k):
     # Omega(N, k) = N! / (k! * (N-k)!)
     return math.comb(n, k)
 
 For the maximum computable N task, the constraint stems from attempting to store 2^N specific configurations in your system's RAM. To test this and aim for the performance incentive, you can write a loop that generates combinations for increasing values of N, using Python's time module to track when the execution reaches the five-minute wall-clock limit.   How would you like to approach generating the macrostate distribution plot for the larger sets of $N=20, 50, 80$, and $100$?
+
 
 Prompt 2: use the same approach as before, and then for values higher than 100 it is going to be used the log-gamma function
 
@@ -80,6 +85,7 @@ def calculate_probability(N: int, k: int) -> float:
 
 Moreover, some pseudocode has been added so my collegues understand better each of the functions.
 
+# Grouping states and the benchmarking
 
 Now, a better prompt for the AI was done in order to help me code the grouping of states and the benchmarking.
 
@@ -132,6 +138,8 @@ def benchmark_enumeration(max_time_seconds: int = 300) -> None:
 In this case, no improvements were necessary as with a more clear prompt for the AI the code generated was better.
 The code for the cumulative probability, and to calculate the entropy, was not necessary to use AI as it was trivial. For the likelihood_ratio, however, it was necessary to use AI:
 
+# Likelihood Ratio and time to highly ordered state
+
 Prompt: Using the considerations I told you above, I need that you create a code of the likelihood ratio.
 
 Gemini:
@@ -149,6 +157,7 @@ def likelihood_ratio(N: int, k_target: int) -> float:
 Again, no improvements needed.
 
 Finally, the code for the expected waiting time to highly ordered state function was generated.
+
 
 Prompt: Lastly, I need you to help me build the waiting time to highly ordered state function code.
 
@@ -170,3 +179,9 @@ def expected_waiting_time(N: int, k_target: int, rate_per_second: int) -> float:
     expected_trials = 1.0 / p_target
     return expected_trials / rate_per_second
 
+
+# Main code prompts
+Prompt 1: Is this correct for micro state? / Ok is this correct? (submitting user-written code for review)
+AI Assistance: Instead of generating full modules from scratch, the AI acted as a code reviewer and logic verifier. It validated the correctness of the user's bitwise generator (enumerate_microstates), group_macrostates, log-space combinatorics (log_omega), and the expected_waiting_time function, ensuring they adhered to physical constraints and prevented numerical overflow.
+Prompt 2: (Handling Git identity error) / What is the next step? / Can you create a flowchart for main.py? Explain this part.
+AI Assistance:Resolved a Git identity configuration warning (user.name and user.email).Provided a concise checklist of remaining tasks. High-resolution vector .pdf plot generation into report/figures/.

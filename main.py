@@ -1,7 +1,6 @@
 import os
 import matplotlib.pyplot as plt
-from src.microstates import benchmark_enumeration
-from src.combinatorics import calculate_probability
+from src import benchmark_enumeration, calculate_probability
 
 
 def main():
@@ -28,10 +27,6 @@ def main():
         plt.show()
         plt.close()
         print(f" -> Generated and saved: {output_path}")
-
-    print("All distribution plots are now available in 'report/figures/'.")
-
-
 if __name__ == "__main__":
     main()
 
