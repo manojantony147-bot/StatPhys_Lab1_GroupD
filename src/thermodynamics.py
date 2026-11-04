@@ -13,3 +13,7 @@ def expected_waiting_time(N: int, k_target: int, rate_per_second: int) -> float:
     # Expected trials is 1/P. Total time is trials / rate.
     expected_trials = 1.0 / p_target
     return expected_trials / rate_per_second
+
+def entropy_change(N: int, k1: int, k2: int) -> float:
+    """Entropy change Delta S = S(k1) - S(k2), in J/K."""
+    return calculate_entropy(N, k1) - calculate_entropy(N, k2)
