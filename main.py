@@ -40,9 +40,9 @@ def task_c_distribution():
         omega_values = [math.comb(N, k) for k in k_values]
         plt_mod.plot(k_values, omega_values, marker='o', linestyle='-', markersize=3, label=f"N = {N}")
         
-    plt_mod.title("Macrostate Frequency Distribution $\Omega(N, k)$", fontsize=12, fontweight='bold')
+    plt_mod.title(r"Macrostate Frequency Distribution $\Omega(N, k)$", fontsize=12, fontweight='bold')
     plt_mod.xlabel("Number of Heads ($k$)", fontsize=10)
-    plt_mod.ylabel("Frequency $\Omega(N, k)$", fontsize=10)
+    plt_mod.ylabel(r"Frequency $\Omega(N, k)$", fontsize=10)
     plt_mod.yscale('log')
     plt_mod.legend()
     plt_mod.grid(True, linestyle='--', alpha=0.6)
