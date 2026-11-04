@@ -14,7 +14,7 @@ def task_a_enumeration():
     print(f"Listing all 2^{N} = {1 << N} microstates:")
     for microstate in enumerate_microstates(N):
         print(microstate)
-    
+
     # 2. State corresponding number of microstates for each macrostate
     print("\nNumber of microstates per macrostate (k heads):")
     macrostates = group_macrostates(N)
@@ -36,21 +36,21 @@ def task_c_distribution():
 
     N_values = [20, 50, 80, 100]
     plt.figure(figsize=(10, 6))
-    
+
     for N in N_values:
         k_values = list(range(N + 1))
         # Calculating Ω(N, k) using binomial coefficients N choose k
         omega_values = [math.comb(N, k) for k in k_values]
         plt.plot(k_values, omega_values, marker='o', linestyle='-', markersize=3, label=f"N = {N}")
-        
-    plt.title("Macrostate Frequency Distribution $\Omega(N, k)$", fontsize=12, fontweight='bold')
+
+    plt.title(r"Macrostate Frequency Distribution $\Omega(N, k)$", fontsize=12, fontweight='bold')
     plt.xlabel("Number of Heads ($k$)", fontsize=10)
-    plt.ylabel("Frequency $\Omega(N, k)$", fontsize=10)
+    plt.ylabel(r"Frequency $\Omega(N, k)$", fontsize=10)
     plt.yscale('log') # Log scale is recommended due to massive frequency differences
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
-    
+
     import os
     os.makedirs("report/figures", exist_ok=True)
     plt.savefig("report/figures/macrostate_distribution_combined.pdf", format='pdf')
@@ -58,5 +58,16 @@ def task_c_distribution():
 
 if __name__ == "__main__":
     task_a_enumeration()
-    task_b_benchmark() 
+    task_b_benchmark()
     task_c_distribution()
+
+
+def test_enumerate_microstates():
+    microstates = list(enumerate_microstates(3))
+
+    assert len(microstates) == 8
+    assert len(set(microstates)) == 8
+
+
+def test_group_macrostates():
+    assert group_macrostates(3) == {0: 1, 1: 3, 2: 3, 3: 1}
