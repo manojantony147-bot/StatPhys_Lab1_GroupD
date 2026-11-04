@@ -7,7 +7,6 @@ def calculate_omega(N: int, k: int) -> int:
     """
     return math.comb(N, k)
 
-
 def log_omega(N: int, k: int) -> float:
     """
     Computes the natural logarithm of the Omega using the 

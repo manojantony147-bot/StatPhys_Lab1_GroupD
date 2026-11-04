@@ -1,6 +1,12 @@
 from src.combinatorics import log_omega
 import math
 
+_BOLTZMANN_CONSTANT = 1.380649e-23  # J/K
+
+def calculate_entropy(N: int, k: int) -> float:
+    """Calculate the Boltzmann entropy in J/K for the state with k up spins."""
+    return _BOLTZMANN_CONSTANT * log_omega(N, k)
+
 def expected_waiting_time(N: int, k_target: int, rate_per_second: int) -> float:
     """
     Calculates the expected time in seconds to randomly observe a 
